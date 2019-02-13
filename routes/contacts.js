@@ -45,4 +45,21 @@ router.post('/getlistofcontacts', function(req, res, next) {
         res.json({flag:"error"})
     }
 });
+router.post('/editcontact', function(req, res, next) {
+    try {
+        console.log(req.body)
+        let contact_id = req.body.contact_id;
+        let name = req.body.name;
+        let mobileNumber = req.body.mobileNumber;
+        contacts.updateContact(contact_id,name,mobileNumber)
+        .then(()=>{
+            res.json({flag:"success"})
+        }).catch((err)=>{
+            console.log(err)
+            res.json({flag:"error"})
+        })
+    } catch (error) {
+        res.json({flag:"error"})
+    }
+});
 module.exports = router;
