@@ -11,6 +11,30 @@ const insertOperation = (query,collection) =>{
         })
     })
  }
+ const findOperation = (query,collection) =>{
+    return new Promise((resolve, reject) => {
+        database.get().collection(collection).find(query).toArray((err,result)=>{
+            if(err){
+                reject(err);
+            }else {
+                resolve(result)
+            }
+        })
+    })
+ }
+ const deleteOperation = (query,collection) =>{
+    return new Promise((resolve, reject) => {
+        database.get().collection(collection).remove(query,(err,result)=>{
+            if(err){
+                reject(err);
+            }else {
+                resolve(result)
+            }
+        })
+    })
+ }
  module.exports = {
-    insertOperation:insertOperation
+    insertOperation:insertOperation,
+    findOperation:findOperation,
+    deleteOperation:deleteOperation
  }
