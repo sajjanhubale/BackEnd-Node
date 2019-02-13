@@ -26,10 +26,10 @@ const addNewContact = async (name,mobileNumber) =>{
     }
   }
 
-  const deleteContact = async (name) => {
+  const deleteContact = async (contact_id) => {
     try {
         const query = {
-            name:name
+            contact_id:contact_id
         }
         const collection = "contacts";
         await dboperations.deleteOperation(query,collection);

@@ -19,9 +19,8 @@ router.post('/addnewcontact', function(req, res, next) {
 });
 router.post('/deletecontact', function(req, res, next) {
     try {
-        let name = req.body.name;
-        console.log(name)
-        contacts.deleteContact(name)
+        let contact_id = req.body.contact_id;
+        contacts.deleteContact(contact_id)
         .then(()=>{
             res.json({flag:"success"})
         }).catch((err)=>{
