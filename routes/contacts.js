@@ -19,7 +19,7 @@ router.post('/addnewcontact', function(req, res, next) {
 });
 router.post('/deletecontact', function(req, res, next) {
     try {
-        let contact_id = req.body.contact_id;
+        let contact_id = parseInt(req.body.contact_id);
         contacts.deleteContact(contact_id)
         .then(()=>{
             res.json({flag:"success"})
